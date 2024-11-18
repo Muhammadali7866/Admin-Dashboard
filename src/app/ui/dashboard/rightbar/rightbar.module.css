@@ -4,6 +4,10 @@
 
 .item {
   position: relative;
+  background-color: linear-gradient(to top, #182237, #253352);
+  padding: 20px 0px;
+  border-radius: 10px;
+  margin-bottom: 20px;
 }
 
 .bgContainer {
@@ -15,6 +19,43 @@
 }
 
 .bg {
-  position: cover;
+  position: contain;
   opacity: 0.2;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.notification {
+  font-weight: bold;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 24px;
+  color: var(--textSoft);
+}
+
+.button {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background-color: #5d57c9;
+  width: max-content;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+
+.desc {
+  opacity: 0.5;
+}
+
+.subtitles {
+  opacity: 0.5;
 }
