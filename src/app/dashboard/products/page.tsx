@@ -8,8 +8,8 @@ export default function Products() {
     <div className={styles.container}>
       <div className={styles.top}>
         <Search placeholder="Now for user" />
-        <Link href="/dashboard/users/add" className={styles.addButton}>
-          Add User
+        <Link href="/dashboard/products/add" className={styles.addButton}>
+          Add Product
         </Link>
       </div>
       <table className={styles.table}>
