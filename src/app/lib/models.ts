@@ -95,7 +95,9 @@ const productSchema: Schema<IProduct> = new Schema(
 );
 
 // create models
-const User = mongoose.model<IUSer>("User", userSchema);
-const Product = mongoose.model<IProduct>("Product", productSchema);
+// Check if models exist before defining them
+const User = mongoose.models.User || mongoose.model<IUSer>("User", userSchema);
+const Product =
+  mongoose.models.Product || mongoose.model<IProduct>("Product", productSchema);
 
 export { User, Product };

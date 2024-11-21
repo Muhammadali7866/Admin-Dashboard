@@ -9,13 +9,12 @@ export const connnectToDb = async (): Promise<void> => {
     }
 
     const db = await mongoose.connect(
-      "mongodb+srv://alimuhammadsenarios:hNSs1CtdbERnJz6l@cluster0.6rdpi.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
+      "mongodb+srv://alimuhammadsenarios:hNSs1CtdbERnJz6l@cluster0.6rdpi.mongodb.net/test?retryWrites=true&w=majority&appName=Cluster0"
     );
 
     isConnected = db.connection.readyState === 1; // Update connection status
     console.log({ isConnected });
     console.log("Database connection established");
-    data();
   } catch (error) {
     throw new Error((error as Error).message);
   }
