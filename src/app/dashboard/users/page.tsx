@@ -3,7 +3,10 @@ import styles from "../../ui/dashboard/users/users.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import Pagination from "@/app/ui/dashboard/pagiantion/page";
+import { connnectToDb } from "@/app/lib/utils";
+import insertData from "@/app/lib/dataInsert";
 export default function Users() {
+  insertData();
   return (
     <div className={styles.container}>
       <div className={styles.top}>
