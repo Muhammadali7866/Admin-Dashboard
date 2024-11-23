@@ -14,8 +14,13 @@ interface User {
   isAdmin: boolean;
   isActive: boolean;
 }
-export default async function Users() {
-  let users: User[] = await fetchUsers();
+export default async function Users({
+  searchParams,
+}: {
+  searchParams: { q?: string };
+}) {
+  const q = searchParams?.q || "";
+  let users: User[] = await fetchUsers(q);
 
   return (
     <div className={styles.container}>

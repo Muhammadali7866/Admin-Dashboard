@@ -8,10 +8,11 @@ interface User {
   isAdmin: boolean;
   isActive: boolean;
 }
-export const fetchUsers = async (): Promise<User[]> => {
+export const fetchUsers = async (q: string): Promise<User[]> => {
   try {
+    const regex = new RegExp(q, "i");
     connnectToDb();
-    const users = await User.find();
+    const users = await User.find({ username: { $regex: regex } });
     return users;
   } catch (error) {
     console.log(error);
