@@ -17,6 +17,7 @@ const Search: React.FC<SearchProps> = ({ placeholder }) => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       // create new params
       const params = new URLSearchParams(searchParams?.toString());
+      params.set("page", " 1");
       if (e.target.value) {
         e.target.value.length > 2 && params.set("q", e.target.value);
       } else {

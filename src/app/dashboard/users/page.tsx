@@ -17,10 +17,15 @@ interface User {
 export default async function Users({
   searchParams,
 }: {
-  searchParams: { q?: string };
+  searchParams: { q?: string; page?: number };
 }) {
+  const page = searchParams?.page || 1;
   const q = searchParams?.q || "";
-  let users: User[] = await fetchUsers(q);
+
+  const { users, count }: { users: User[]; count: number } = await fetchUsers(
+    q,
+    page
+  );
 
   return (
     <div className={styles.container}>
@@ -81,7 +86,7 @@ export default async function Users({
           })}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count as number} />
     </div>
   );
 }
