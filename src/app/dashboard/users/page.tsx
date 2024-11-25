@@ -5,6 +5,7 @@ import Image from "next/image";
 import Pagination from "@/app/ui/dashboard/pagiantion/page";
 import { connnectToDb } from "@/app/lib/utils";
 import { fetchUsers } from "@/app/lib/data";
+import { deleteUser } from "@/app/lib/action";
 
 interface User {
   id: string; // or number, based on your data
@@ -69,16 +70,17 @@ export default async function Users({
                 <td>{user.isActive ? "active" : "passive"}</td>
                 <td>
                   <div className={styles.buttons}>
-                    <Link href="/dashboard/users/test">
+                    <Link href={`/dashboard/users/${user.id}`}>
                       <button className={`${styles.button} ${styles.view}`}>
                         View
                       </button>
                     </Link>
-                    <Link href="/">
+                    <form action={deleteUser}>
+                      <input type="hidden" name="id" value={user.id} />
                       <button className={`${styles.button} ${styles.delete}`}>
                         Delete
                       </button>
-                    </Link>
+                    </form>
                   </div>
                 </td>
               </tr>

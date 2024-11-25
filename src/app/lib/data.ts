@@ -7,6 +7,8 @@ interface User {
   createdAt: Date | string; // Use `Date` if you convert strings to Date elsewhere
   isAdmin: boolean;
   isActive: boolean;
+  address: string;
+  password: string;
 }
 export const fetchUsers = async (
   q: string,
@@ -26,6 +28,17 @@ export const fetchUsers = async (
     const count = await User.countDocuments({ username: { $regex: regex } });
 
     return { users, count };
+  } catch (error) {
+    console.log(error);
+    throw new Error("Failed to Fetch Users");
+  }
+};
+export const fetchUser = async (id: string): Promise<User> => {
+  try {
+    connnectToDb();
+    const user = await User.findById(id);
+
+    return user;
   } catch (error) {
     console.log(error);
     throw new Error("Failed to Fetch Users");
